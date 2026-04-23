@@ -6,7 +6,12 @@
 }
 
 @test "marketplace.json has required top-level fields" {
-  run jq -e '.name and .description and .owner and .plugins' .claude-plugin/marketplace.json
+  run jq -e '.name and .owner and .plugins' .claude-plugin/marketplace.json
+  [ "$status" -eq 0 ]
+}
+
+@test "marketplace.json validates with claude plugin validate" {
+  run claude plugin validate "$BATS_TEST_DIRNAME/.."
   [ "$status" -eq 0 ]
 }
 
