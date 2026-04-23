@@ -21,8 +21,8 @@ Personal collection of skills shared across Claude Code, Codex CLI, and Gemini C
 
 | Skill | What it does |
 |---|---|
-| vps-ninja | (TBD — filled during Task 18 from real skill README) |
-| creds-app-skill | (TBD) |
+| vps-ninja | Deploy and manage applications on VPS servers with Dokploy |
+| creds-app-skill | Personal credentials vault and AI-tooling bootstrap |
 
 More skills will be added later (e.g., `3x-ui`, `stitch-skill`, `context-map-skill`).
 
