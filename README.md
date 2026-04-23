@@ -1,4 +1,4 @@
-# kyzde-skills — personal skills marketplace
+# kyzdes-skills — personal skills marketplace
 
 Personal collection of skills shared across Claude Code, Codex CLI, and Gemini CLI.
 
@@ -6,26 +6,25 @@ Personal collection of skills shared across Claude Code, Codex CLI, and Gemini C
 
 ### Claude Code
 
-    /plugin marketplace add kyzde/marketplace-skills
-    /plugin install vps-ninja@kyzde-skills
+    /plugin marketplace add kyzdes/marketplace-skills
+    /plugin install vps-ninja@kyzdes-skills
 
 ### Codex CLI
 
-    curl -sSL https://raw.githubusercontent.com/kyzde/marketplace-skills/main/install.sh | bash -s codex vps-ninja
+    curl -sSL https://raw.githubusercontent.com/kyzdes/marketplace-skills/main/install.sh | bash -s codex vps-ninja
 
 ### Gemini CLI
 
-    curl -sSL https://raw.githubusercontent.com/kyzde/marketplace-skills/main/install.sh | bash -s gemini vps-ninja
+    curl -sSL https://raw.githubusercontent.com/kyzdes/marketplace-skills/main/install.sh | bash -s gemini vps-ninja
 
 ## Available skills
 
 | Skill | What it does |
 |---|---|
-| vps-ninja | (TBD — filled during Task 4 from real skill README) |
-| 3x-ui | (TBD) |
-| stitch-skill | (TBD) |
+| vps-ninja | (TBD — filled during Task 18 from real skill README) |
 | creds-app-skill | (TBD) |
-| context-map-skill | (TBD) |
+
+More skills will be added later (e.g., `3x-ui`, `stitch-skill`, `context-map-skill`).
 
 ## Updates
 

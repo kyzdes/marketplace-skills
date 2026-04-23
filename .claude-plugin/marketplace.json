@@ -1,8 +1,8 @@
 {
-  "name": "kyzde-skills",
+  "name": "kyzdes-skills",
   "description": "Personal skills marketplace",
   "owner": {
-    "name": "kyzde"
+    "name": "kyzdes"
   },
   "plugins": []
 }
