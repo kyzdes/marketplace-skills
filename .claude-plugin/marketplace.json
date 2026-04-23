@@ -11,6 +11,14 @@
         "source": "github",
         "repo": "kyzdes/vps-ninja"
       }
+    },
+    {
+      "name": "creds-app-skill",
+      "description": "Personal credentials vault and AI-tooling bootstrap",
+      "source": {
+        "source": "github",
+        "repo": "kyzdes/creds-app-skill"
+      }
     }
   ]
 }

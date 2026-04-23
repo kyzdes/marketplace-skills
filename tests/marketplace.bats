@@ -30,3 +30,8 @@
   run jq -e '.plugins[] | select(.name == "vps-ninja") | select(.source.source == "github" and .source.repo == "kyzdes/vps-ninja")' .claude-plugin/marketplace.json
   [ "$status" -eq 0 ]
 }
+
+@test "creds-app-skill entry points to github kyzdes/creds-app-skill" {
+  run jq -e '.plugins[] | select(.name == "creds-app-skill") | select(.source.source == "github" and .source.repo == "kyzdes/creds-app-skill")' .claude-plugin/marketplace.json
+  [ "$status" -eq 0 ]
+}
