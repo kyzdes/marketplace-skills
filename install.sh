@@ -64,6 +64,37 @@ EOF
   done
 }
 
+cmd_update() {
+  local agent=${1:-}
+  [ -z "$agent" ] && { echo "error: agent required" >&2; exit 2; }
+  shift || true
+  local only_skill=${1:-}
+
+  local target=${INSTALL_DIR:-$(default_install_dir "$agent")}
+  [ -z "$target" ] && { echo "error: INSTALL_DIR not set" >&2; exit 2; }
+
+  local targets=()
+  if [ -n "$only_skill" ]; then
+    is_known_skill "$only_skill" || { echo "unknown skill: $only_skill" >&2; exit 2; }
+    targets=("$only_skill")
+  else
+    local skill
+    for skill in "${SKILLS[@]}"; do
+      [ -d "$target/$skill/.git" ] && targets+=("$skill")
+    done
+  fi
+
+  local skill cmd
+  for skill in "${targets[@]}"; do
+    cmd="git -C $target/$skill pull --ff-only"
+    if [ "${DRY_RUN:-0}" = "1" ]; then
+      echo "$cmd"
+    else
+      eval "$cmd"
+    fi
+  done
+}
+
 cmd_list() {
   printf '%s\n' "${SKILLS[@]}"
 }
@@ -90,7 +121,7 @@ main() {
     claude)  cmd_claude ;;
     codex)   install_for_agent codex  "$@" ;;
     gemini)  install_for_agent gemini "$@" ;;
-    update)  echo "update: not implemented yet" >&2; exit 3 ;;
+    update)  cmd_update "$@" ;;
     *)       echo "unknown command: $cmd" >&2; usage; exit 2 ;;
   esac
 }

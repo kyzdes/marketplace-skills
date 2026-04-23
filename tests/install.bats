@@ -56,3 +56,32 @@ SCRIPT="$BATS_TEST_DIRNAME/../install.sh"
   [ "$status" -ne 0 ]
   [[ "$output" == *"INSTALL_DIR"* ]]
 }
+
+@test "install.sh update without agent exits non-zero" {
+  run bash "$SCRIPT" update
+  [ "$status" -ne 0 ]
+}
+
+@test "install.sh update codex in dry-run runs git pull for each installed skill" {
+  tmp="$BATS_TMPDIR/upd"
+  rm -rf "$tmp"
+  mkdir -p "$tmp/vps-ninja/.git"
+  INSTALL_DIR="$tmp" DRY_RUN=1 run bash "$SCRIPT" update codex
+  [ "$status" -eq 0 ]
+  [[ "$output" == *"git -C $tmp/vps-ninja pull"* ]]
+}
+
+@test "install.sh update codex with specific skill only pulls that one" {
+  tmp="$BATS_TMPDIR/upd-single"
+  rm -rf "$tmp"
+  mkdir -p "$tmp/vps-ninja/.git" "$tmp/creds-app-skill/.git"
+  INSTALL_DIR="$tmp" DRY_RUN=1 run bash "$SCRIPT" update codex creds-app-skill
+  [ "$status" -eq 0 ]
+  [[ "$output" == *"creds-app-skill pull"* ]]
+  [[ "$output" != *"vps-ninja pull"* ]]
+}
+
+@test "install.sh update without INSTALL_DIR fails" {
+  INSTALL_DIR="" run bash "$SCRIPT" update codex
+  [ "$status" -ne 0 ]
+}
