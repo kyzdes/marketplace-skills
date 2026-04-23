@@ -11,6 +11,7 @@
 }
 
 @test "marketplace.json validates with claude plugin validate" {
+  command -v claude >/dev/null || skip "claude CLI not available"
   run claude plugin validate "$BATS_TEST_DIRNAME/.."
   [ "$status" -eq 0 ]
 }
