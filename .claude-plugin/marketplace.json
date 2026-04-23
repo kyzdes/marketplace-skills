@@ -3,5 +3,14 @@
   "owner": {
     "name": "kyzdes"
   },
-  "plugins": []
+  "plugins": [
+    {
+      "name": "vps-ninja",
+      "description": "Deploy and manage applications on VPS servers with Dokploy",
+      "source": {
+        "source": "github",
+        "repo": "kyzdes/vps-ninja"
+      }
+    }
+  ]
 }

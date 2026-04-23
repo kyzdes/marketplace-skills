@@ -24,3 +24,8 @@
   run jq -e 'all(.plugins[]; .name and .source.repo)' .claude-plugin/marketplace.json
   [ "$status" -eq 0 ]
 }
+
+@test "vps-ninja entry points to github kyzdes/vps-ninja" {
+  run jq -e '.plugins[] | select(.name == "vps-ninja") | select(.source.source == "github" and .source.repo == "kyzdes/vps-ninja")' .claude-plugin/marketplace.json
+  [ "$status" -eq 0 ]
+}
